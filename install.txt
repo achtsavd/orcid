@@ -1,0 +1,39 @@
+sudo apt install npm
+sudo npm install -g npm@3.10.10
+
+sudo mkdir -p /opt/nodejs
+wget https://nodejs.org/dist/v6.17.1/node-v6.17.1-linux-x64.tar.gz
+sudo tar -xvzf node-v6.17.1-linux-x64.tar.gz -C /opt/nodejs/
+cd /opt/nodejs
+sudo mv node-v6.17.1-linux-x64/ 6.17.1
+sudo ln -s 6.17.1/ current
+sudo ln -s /opt/nodejs/current/bin/node /bin/node
+
+git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg_source
+cd ffmpeg_source/
+git checkout 2ca65fc7b74444edd51d5803a2c1e05a801a6023
+make -j4
+sudo make install
+
+git clone https://github.com/intel-iot-devkit/people-counter-python.git 
+cd people-counter-python/
+git checkout remotes/origin/OpenVINO_2020_R3
+
+git clone https://github.com/openvinotoolkit/openvino
+git checkout remotes/origin/releases/2020/3
+
+mkdir && cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON -DPYTHON_EXECUTABLE=`which python3.6` -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so -DPYTHON_INCLUDE_DIR=/usr/include/python3.6 ..
+make -j $(nproc-all)
+
+#Check the filepath to the created files.
+export PYTHONPATH=$PYTHONPATH:/~/openvino/bin/intel64/Release/lib/python_api/python3.6/openvino
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/openvino/bin/intel64/Release/lib/
+
+
+https://github.com/intel-iot-devkit/people-counter-python
+
+#PYTHON3.6
+sudo apt-get install -y libpython3.6-dev
+sudo apt install python3.6-dev
+sudo apt install libpython3.6-stdlib
