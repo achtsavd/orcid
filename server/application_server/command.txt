@@ -1,0 +1,2 @@
+python3 receiver.py | ffmpeg -v warning -f rawvideo -pixel_format bgr24 -video_size 768x432 -framerate 24 -i - http://127.0.0.1:8090/fac.ffm
+
