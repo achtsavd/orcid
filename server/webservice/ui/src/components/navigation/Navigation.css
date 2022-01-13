@@ -1,7 +1,7 @@
 @import '../../constants/constants.css';
 
 .navigation {
-  background-color: #00AEEF;
+  background-color: #1D1E22;
   width: calc( 100% - 10px);
   height: 55px;
   padding-left: 10px;

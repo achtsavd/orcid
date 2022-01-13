@@ -98,6 +98,12 @@ var config = {
           loader: "url-loader",
         },
       },
+      {
+        test: /.(png?)(\?[a-z0-9]+)?$/,
+        use: {
+          loader: "file-loader",
+        },
+      },
     ],
   },
   resolve: {

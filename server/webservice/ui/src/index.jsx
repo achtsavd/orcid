@@ -6,27 +6,23 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from "redux-thunk";
-import createHistory from "history/createBrowserHistory";
+const createHistory = require('history').createBrowserHistory
 import { Route, Switch } from "react-router-dom";
 import { ConnectedRouter, routerMiddleware } from "react-router-redux";
 
-// components
-import ConnectedNavigation from "components/navigation/ConnectedNavigation";
-
-// features
-import ConnectedLog from "features/stats/ConnectedStats";
 
 // reducers
 import reducers from "dux/reducers";
 
 // pages
 import Monitor from "pages/monitor/Monitor";
+import Login from "pages/login/Login";
+import Rooms from "pages/rooms/Rooms";
 
 // css
 import "index.css";
+import './font-awesome.css';
 
-// html
-import "index.html";
 
 // Create a history of your choosing (we"re using a browser history in this case)
 const history = createHistory();
@@ -57,9 +53,9 @@ render(
   <Provider store={ store }>
     <ConnectedRouter history={ history }>
       <div className="intel-demo-container">
-        <Route component={ ConnectedNavigation } />
-        <ConnectedLog />
-        <Route exact path="/" component={ Monitor } />
+        <Route exact path="/" component={ Login } />
+        <Route exact path="/rooms" component={ Rooms } />
+        <Route exact path="/monitor" component={ Monitor } />
       </div>
     </ConnectedRouter>
   </Provider>,

@@ -23,6 +23,7 @@ class CameraFeed extends React.Component {
     const imgStyle = { "maxWidth": `${ width }px` };
     return (
       <div className="camera-feed" >
+        <h1>Camera</h1>
         <div className="camera-feed-container">
           <img src={ this.state.mjpgSrc } alt="camera feed" style={ imgStyle } onClick={ this.refreshImage } className="camera-feed-img" />
         </div>
