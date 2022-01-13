@@ -14,9 +14,7 @@ class Monitor extends React.Component {
     return (
         <div>
           <Navigation history={this.props.history}/>
-          <ConnectedLog />
           <CameraFeed />
-          <ConnectedStats />
         </div>
     );
   }

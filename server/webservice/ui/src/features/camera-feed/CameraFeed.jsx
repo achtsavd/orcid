@@ -1,6 +1,7 @@
 import React from "react";
 import "./CameraFeed.css";
 import { HTTP, SETTINGS } from "../../constants/constants";
+import ConnectedStats from "../stats/ConnectedStats";
 
 class CameraFeed extends React.Component {
   constructor( props ) {
@@ -27,6 +28,7 @@ class CameraFeed extends React.Component {
         <div className="camera-feed-container">
           <img src={ this.state.mjpgSrc } alt="camera feed" style={ imgStyle } onClick={ this.refreshImage } className="camera-feed-img" />
         </div>
+        <ConnectedStats />
       </div>
     );
   }

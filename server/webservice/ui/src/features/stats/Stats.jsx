@@ -171,22 +171,20 @@ class Stats extends React.Component {
       } ],
     };
 
+
     return (
-      <div className={ `stats ${ this.props.statsOn ? "active" : "" }` }>
-        { /* Current count */ }
-        <DataBox title="People in frame" data={ this.state.currentCount } />
-        <GraphPane graphId="chart1" graphData={ currentCount } graphOptions={ graphOptions } />
-        { /* Duration */ }
-        <DataBox title="average duration" data={ this.state.currentDurationAvg } color="blue" />
-        <GraphPane graphId="chart2" graphData={ duration } graphOptions={ graphOptions } />
-        <div className={ `total-count-toggle ${ this.props.totalCountOn ? "hide-toggle" : "" }` }>
-          <button onClick={ this.props.toggleTotalCount }><FontAwesome name="toggle-left" size="3x" /></button>
+        <div className={'stats active'}>
+          <div className={"row"}>
+            <div className={"col-3"}>
+              <DataBox title="People in frame" data={ this.state.currentCount } />
+              <GraphPane graphId="chart1" graphData={ currentCount } graphOptions={ graphOptions } />
+            </div>
+            <div className={"col-3"}>
+              <DataBox title="average duration" data={ this.state.currentDurationAvg } color="red" />
+              <GraphPane graphId="chart2" graphData={ duration } graphOptions={ graphOptions } />
+            </div>
+          </div>
         </div>
-        <div className={ `total-count-container ${ this.props.totalCountOn ? "" : "hide-count" }` }>
-          <button className="counter-close" onClick={ this.props.toggleTotalCount }><FontAwesome name="toggle-right" size="2x" /></button>
-          <DataBox title="Total Counted" data={ this.state.durations.length } color="blue" />
-        </div>
-      </div>
     );
   }
 }
