@@ -69,9 +69,7 @@ class Stats extends React.Component {
   calculateDuration( input ) {
     const newDuration = this.state.durations;
     newDuration.push( input );
-    const newAverage = this.state.durations.reduce( ( a, b ) => {
-      return a + b.duration;
-    }, 0 ) / this.state.durations.length;
+    const newAverage = this.state.durations.reduce( ( a, b ) => a + b.duration, 0 ) / this.state.durations.length;
     const format = moment( newAverage, "ss" ).format( "mm:ss" );
     let newDurationLabels = this.state.currentDurationLabels;
     let newDurationData = this.state.currentDurationData;
@@ -171,20 +169,21 @@ class Stats extends React.Component {
       } ],
     };
 
-
     return (
-        <div className={'stats active'}>
-          <div className={"row"}>
-            <div className={"col-3"}>
-              <DataBox title="People in frame" data={ this.state.currentCount } />
-              <GraphPane graphId="chart1" graphData={ currentCount } graphOptions={ graphOptions } />
-            </div>
-            <div className={"col-3"}>
-              <DataBox title="average duration" data={ this.state.currentDurationAvg } color="red" />
-              <GraphPane graphId="chart2" graphData={ duration } graphOptions={ graphOptions } />
-            </div>
+      <div className={ "stats active" }>
+        <div className={ "row" }>
+          <div className={ "col-3" }>
+            <DataBox title="People in frame" data={ this.state.currentCount } />
+            <GraphPane graphId="chart1" graphData={ currentCount } graphOptions={ graphOptions } />
           </div>
         </div>
+        <div className={ "row" }>
+          <div className={ "col-3" }>
+            <DataBox title="average duration" data={ this.state.currentDurationAvg } color="red" />
+            <GraphPane graphId="chart2" graphData={ duration } graphOptions={ graphOptions } />
+          </div>
+        </div>
+      </div>
     );
   }
 }
