@@ -17,6 +17,7 @@ import reducers from "dux/reducers";
 // pages
 import Monitor from "pages/monitor/Monitor";
 import Login from "pages/login/Login";
+import Register from "pages/register/Register";
 import Rooms from "pages/rooms/Rooms";
 
 // css
@@ -44,7 +45,7 @@ let StatsOn = false;
 
 const togglePanel = function(){
   console.log( "toggling panel");
-  StatsOn = !StatsOn;  
+  StatsOn = !StatsOn;
 }
 
 
@@ -54,6 +55,7 @@ render(
     <ConnectedRouter history={ history }>
       <div className="intel-demo-container">
         <Route exact path="/" component={ Login } />
+        <Route exact path="/register" component={ Register } />
         <Route exact path="/rooms" component={ Rooms } />
         <Route exact path="/monitor" component={ Monitor } />
       </div>

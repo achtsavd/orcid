@@ -18,6 +18,7 @@ class Login extends React.Component {
                     <h1>Login</h1>
                     <input type="text" name="" placeholder="Username"/>
                     <input type="password" name="" placeholder="Password"/>
+                    <div style={{marginTop: '18px'}}><a href={'/register'}>Do you want to register?</a></div>
                     <input type="submit" value="Enter" onClick={this.loginAndRedirect}/>
                 </form>
             </div>
